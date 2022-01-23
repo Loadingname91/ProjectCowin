@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "e1cb8a7f-0ac3-450b-ac72-555356e08986",
+		"name": "Custom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "spiderman",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "spiderman@123",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/token/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				},
+				"description": "Sample login API"
+			},
+			"response": []
+		}
+	]
+}
