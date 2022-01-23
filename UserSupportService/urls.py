@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('hello/', views.HelloView.as_view(), name='hello'),
+    path('api/login/', views.MyTokenObtainPairView.as_view(), name='login'),
 ]
