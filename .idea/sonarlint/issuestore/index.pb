@@ -1,0 +1,11 @@
+
+N
+VaccinationService/__init__.py,3\c\3cdefb677fcb295ab1914a259c1dbfc5ed67552a
+K
+VaccinationService/tests.py,9\9\992fe97b51139977bb1fd087a14004466599ab2b
+w
+GVaccinationService/migrations/0008_vaccinationcenter_seats_available.py,7\9\79cebb1d3fc6964103b4643ca582652e19bd1417
+€
+PVaccinationService/migrations/0007_alter_vaccinationcenter_registered_members.py,1\a\1a8e1493764bfb0b90b50c162b911f11e0d28698
+€
+PVaccinationService/migrations/0009_alter_vaccinationcenter_registered_members.py,4\f\4f9af165baec67c0ed6dff810020ff3ebebf0de8

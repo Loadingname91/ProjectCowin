@@ -1,12 +1,13 @@
+from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from UserSupportService.models import User
 from datetime import datetime, timezone
 
-class CurrentUserSerializer(serializers.ModelSerializer):
 
+class CurrentUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('email', 'registeration_date', 'lastlogin_date', 'live_mode', 'is_default')
+        fields = ('email', 'username', 'password', 'registeration_date', 'lastlogin_date', 'live_mode', 'is_default')
         ordering = ('email', 'registeration_date', 'lastlogin_date', 'live_mode', 'is_default')
 
     def update(self, instance, validated_data):
@@ -22,3 +23,6 @@ class CurrentUserSerializer(serializers.ModelSerializer):
         instance.lastlogin_date = datetime.now(tz=timezone.utc)
         instance.save()
         return instance
+
+    def validate_password(self, value):
+        return make_password(value)

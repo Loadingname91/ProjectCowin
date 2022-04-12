@@ -11,8 +11,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         # Add custom claims
         token["email"] = user_details["email"]
-        message = 'User with name ' + ' email ' + \
-            user_details["email"] + ' logged in'
+
         return token
 
     def validate(self, attrs):
