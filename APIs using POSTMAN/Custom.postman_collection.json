@@ -1,45 +1,2795 @@
 {
 	"info": {
 		"_postman_id": "e1cb8a7f-0ac3-450b-ac72-555356e08986",
-		"name": "Custom",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "PCDjango",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10227544"
 	},
 	"item": [
 		{
-			"name": "Login Request",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Login Request",
+					"event": [
 						{
-							"key": "username",
-							"value": "spiderman",
-							"type": "default"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var headrValue = pm.response.json()\r",
+									"console.log(headrValue)\r",
+									"pm.environment.set(\"AccessToken\", headrValue.access);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Loadingname",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "default"
+								}
+							]
 						},
+						"url": {
+							"raw": "localhost:8000/api/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						},
+						"description": "Sample login API"
+					},
+					"response": [
 						{
-							"key": "password",
-							"value": "spiderman@123",
-							"type": "default"
+							"name": "Login Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "Loadingname",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8000/api/login/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 04 Apr 2022 20:39:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "577"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0OTE5MTE3NywiaWF0IjoxNjQ5MTA0Nzc3LCJqdGkiOiI4N2Y2NWRiYTEwZmM0MmMwYjU0ODBhMjRlMTQzOTc0YiIsInVzZXJfaWQiOjcsImVtYWlsIjoiZ29waW5hdGhoaXRlc2hAZ21haWwuY29tIn0.Y3v1zvK_cOah72HB7uzy5C63v3Mlg50UNFdH3fWneJw\",\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5MTA1MDc3LCJpYXQiOjE2NDkxMDQ3NzcsImp0aSI6ImQ1MTY4ODE3OWI5NjRlYzI4Mzg2NjViOWFmZDJhYmNiIiwidXNlcl9pZCI6NywiZW1haWwiOiJnb3BpbmF0aGhpdGVzaEBnbWFpbC5jb20ifQ.1pAYMuTr-RvWOeXzZ0pevES3RcxH57C12__5FUsHvCA\"\n}"
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:8000/api/token/",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"token",
-						""
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NjAwNjE5LCJpYXQiOjE2NDk2MDAzMTksImp0aSI6ImMxNDViZjY5ODM3MjQzODE4NzRlYTM2MGVkZThhYWZmIiwidXNlcl9pZCI6NywiZW1haWwiOiJnb3BpbmF0aGhpdGVzaEBnbWFpbC5jb20ifQ.kE5cvQ5FrLIEW2IDQjfylgP-UA1v60TvXgaGbaByutg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0OTY4NjcxOSwiaWF0IjoxNjQ5NjAwMzE5LCJqdGkiOiJhOGNiM2JkYjQwMGQ0NzNhYmJkNzcwNjIxZWUzODY2NSIsInVzZXJfaWQiOjcsImVtYWlsIjoiZ29waW5hdGhoaXRlc2hAZ21haWwuY29tIn0.AKU0_CtQxD38m-RazGSCOVUVduhmvvV1zlXnhDUXABs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/logout/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "refresh",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0OTE4ODI2NywiaWF0IjoxNjQ5MTAxODY3LCJqdGkiOiI5YmIxNzYwMTM0ZWI0NjJmOTQ3NjE0MDg5MDE2ZDM5NiIsInVzZXJfaWQiOjIsImVtYWlsIjoiYWRtaW5AcHJvamVjdGNvdmlkLmNvbSJ9.E0SY28Lt7VMqpolH1yhvCexUza7K120JnCn_lSOqYnM",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/logout/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"logout",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 04 Apr 2022 19:51:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, DELETE, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Invalid token\"\n}"
+						}
 					]
 				},
-				"description": "Sample login API"
-			},
-			"response": []
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "anushag.anu10@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "registration_date",
+									"value": "29-03-2022",
+									"type": "text"
+								},
+								{
+									"key": "live_mode",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "is_default",
+									"value": "True",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Loadingname6",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password6",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "Karnataka",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Bangalore",
+									"type": "text"
+								},
+								{
+									"key": "zipcode",
+									"value": "560040",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "9686006919",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "#72, bangalore",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/create_user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"create_user",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "gopinathhitesh@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "registration_date",
+											"value": "29-03-2022",
+											"type": "text"
+										},
+										{
+											"key": "live_mode",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "is_default",
+											"value": "True",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Loadingname",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8000/api/create_user/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"create_user",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 04 Apr 2022 20:38:47 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "276"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"gopinathhitesh@gmail.com\",\n    \"username\": \"Loadingname\",\n    \"password\": \"pbkdf2_sha256$320000$qWVxxmF5V7mL1kmEBCCBz0$cEdrgc8v9Kjx/22GeJIhep/dhysEPgbIBy4Iz5Z2gHc=\",\n    \"registeration_date\": \"2022-04-05\",\n    \"lastlogin_date\": \"2022-04-05T02:08:47.270253Z\",\n    \"live_mode\": 1,\n    \"is_default\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "LogoutAllUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NjAxMDc2LCJpYXQiOjE2NDk2MDA3NzYsImp0aSI6Ijg2MzQ3MTQzNzNhOTQ2Mzk5ZTAxYTk4MzI3ZGUwNWFkIiwidXNlcl9pZCI6NywiZW1haWwiOiJnb3BpbmF0aGhpdGVzaEBnbWFpbC5jb20ifQ.MkixwBhODyPNBEzMCNSmSVcJnN7ZvjIRTWjRfcgf14c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/logoutall/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logoutall",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "LogoutAllUsers",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/logoutall/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"logoutall",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 04 Apr 2022 20:41:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, DELETE, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Successfully logged out\"\n}"
+						},
+						{
+							"name": "Success full log out",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/logoutall/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"logoutall",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 10 Apr 2022 14:26:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, DELETE, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Successfully logged out\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Vaccination Service",
+			"item": [
+				{
+					"name": "Admin Actions",
+					"item": [
+						{
+							"name": "Add VaccinationCenter",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Bangalore East Vaccination Center 8\",\r\n    \"address\": \"#72 , nagarbhavi , bangalore\",\r\n    \"contact\": \"9686006920\",\r\n    \"email\": \"BangaloreEastVaccination8@gmail.com\",\r\n    \"status\": \"active\",\r\n    \"pin_code\": 560072,\r\n    \"state\": \"Karnataka\",\r\n    \"country\": \"India\",\r\n    \"district\":\"Bangalore Urban\",\r\n    \"date\": \"2022-05-28\",\r\n    \"registered_members\": [],\r\n    \"seats_available\": 201\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/vaccination_center/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"vaccination_center",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add VaccinationCenter",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Bangalore East Vaccination Center 2\",\r\n    \"address\": \"#72 , nagarbhavi , bangalore\",\r\n    \"contact\": \"9686006920\",\r\n    \"email\": \"BangaloreEastVaccination2@gmail.com\",\r\n    \"status\": \"active\",\r\n    \"pin_code\": 560072,\r\n    \"state\": \"Karnataka\",\r\n    \"country\": \"India\",\r\n    \"registered_members\": [],\r\n    \"district\":\"Bangalore Urban\",\r\n    \"seats_available\": 40\r\n\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8000/api/vaccination_center/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"vaccination_center",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 11 Apr 2022 08:28:26 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "311"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 2,\n    \"name\": \"Bangalore East Vaccination Center 2\",\n    \"address\": \"#72 , nagarbhavi , bangalore\",\n    \"contact\": \"9686006920\",\n    \"email\": \"BangaloreEastVaccination2@gmail.com\",\n    \"status\": \"active\",\n    \"pin_code\": 560072,\n    \"district\": \"Bangalore Urban\",\n    \"state\": \"Karnataka\",\n    \"country\": \"India\",\n    \"seats_available\": 40,\n    \"registered_members\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Modify VaccinationCenter",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Bangalore East Vaccination Center\",\r\n    \"address\": \"#72 , nagarbhavi , bangalore\",\r\n    \"contact\": \"9686006919\",\r\n    \"email\": \"BangaloreEastVaccination@gmail.com\",\r\n    \"status\": \"active\",\r\n    \"pin_code\": 560072,\r\n    \"state\": \"Karnataka\",\r\n    \"country\": \"India\",\r\n    \"registered_members\": [],\r\n    \"district\": \"Bangalore Urban\",\r\n    \"seats_available\": 90\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/update_vaccination_center/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"update_vaccination_center",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Modify VaccinationCenter",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Bangalore East Vaccination Center\",\r\n    \"address\": \"#72 , nagarbhavi , bangalore\",\r\n    \"contact\": \"9686006919\",\r\n    \"email\": \"BangaloreEastVaccination@gmail.com\",\r\n    \"status\": \"active\",\r\n    \"pin_code\": 560072,\r\n    \"state\": \"Karnataka\",\r\n    \"country\": \"India\",\r\n    \"registered_members\": [],\r\n    \"district\": \"Bangalore Urban\",\r\n    \"seats_available\": 90\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8000/api/update_vaccination_center/1",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"update_vaccination_center",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 11 Apr 2022 08:29:35 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "308"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Bangalore East Vaccination Center\",\n    \"address\": \"#72 , nagarbhavi , bangalore\",\n    \"contact\": \"9686006919\",\n    \"email\": \"BangaloreEastVaccination@gmail.com\",\n    \"status\": \"active\",\n    \"pin_code\": 560072,\n    \"district\": \"Bangalore Urban\",\n    \"state\": \"Karnataka\",\n    \"country\": \"India\",\n    \"seats_available\": 90,\n    \"registered_members\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Get All Vaccination Centers details Admin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/vaccination_center/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"vaccination_center",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get All Vaccination Centers details",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/vaccination_center",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"vaccination_center"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 11 Apr 2022 08:31:28 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "622"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Bangalore East Vaccination Center\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006919\",\n        \"email\": \"BangaloreEastVaccination@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"seats_available\": 90,\n        \"registered_members\": []\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Bangalore East Vaccination Center 2\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006920\",\n        \"email\": \"BangaloreEastVaccination2@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"seats_available\": 40,\n        \"registered_members\": []\n    }\n]"
+								},
+								{
+									"name": "Get All Vaccination Centers details Copy",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/vaccination_center/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"vaccination_center",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 28 May 2022 18:06:06 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.4"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "347"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 21,\n        \"name\": \"Bangalore East Vaccination Center 6\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006920\",\n        \"email\": \"BangaloreEastVaccination6@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"seats_info\": {\n            \"seats_available\": 300,\n            \"date\": \"2022-05-28\",\n            \"register_member\": []\n        }\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Add Members to the Vaccination Center PATCH",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"registered_members\": [\r\n        \"Loadingname3\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/update_vaccination_center/21",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"update_vaccination_center",
+										"21"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add Members to the Vaccination Center PATCH",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"registered_members\": [1]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8000/api/update_vaccination_center/1",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"update_vaccination_center",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 12 Apr 2022 04:52:43 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "308"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Bangalore East Vaccination Center\",\n    \"address\": \"#72 , nagarbhavi , bangalore\",\n    \"contact\": \"9686006919\",\n    \"email\": \"BangaloreEastVaccination@gmail.com\",\n    \"status\": \"active\",\n    \"pin_code\": 560072,\n    \"district\": \"Bangalore Urban\",\n    \"state\": \"Karnataka\",\n    \"country\": \"India\",\n    \"seats_available\": 0,\n    \"registered_members\": [\n        1\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "New  Certificate Admin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\":7,\r\n    \"date_given\": \"2022-07-30\",\r\n    \"date_expiry\": \"2024-07-30\",\r\n    \"status\": \"second_dose\",\r\n    \"center\": 21,\r\n    \"registered_member\": 22\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/certificate/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"certificate",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New  Certificate Admin",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user\":7,\r\n    \"date_given\": \"2022-05-30\",\r\n    \"date_expiry\": \"2024-05-30\",\r\n    \"status\": \"first_dose\",\r\n    \"center\": 21,\r\n    \"registered_member\": 22\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8000/api/certificate/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"certificate",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 30 May 2022 14:40:49 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "125"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 2,\n        \"date_given\": \"2022-05-30\",\n        \"date_expiry\": \"2024-05-30\",\n        \"status\": \"active\",\n        \"user\": 7,\n        \"center\": 21,\n        \"registered_member\": 22\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "General Actions",
+					"item": [
+						{
+							"name": "Get Vaccination Center Details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/update_vaccination_center/21",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"update_vaccination_center",
+										"21"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Vaccination Center Details",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/update_vaccination_center/1",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"update_vaccination_center",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 11 Apr 2022 08:30:30 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "308"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Bangalore East Vaccination Center\",\n    \"address\": \"#72 , nagarbhavi , bangalore\",\n    \"contact\": \"9686006919\",\n    \"email\": \"BangaloreEastVaccination@gmail.com\",\n    \"status\": \"active\",\n    \"pin_code\": 560072,\n    \"district\": \"Bangalore Urban\",\n    \"state\": \"Karnataka\",\n    \"country\": \"India\",\n    \"seats_available\": 90,\n    \"registered_members\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Get All Vaccination Centers details General",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/vaccination_center_all/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"vaccination_center_all",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get All Vaccination Centers details",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/vaccination_center",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"vaccination_center"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 11 Apr 2022 08:31:28 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "622"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Bangalore East Vaccination Center\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006919\",\n        \"email\": \"BangaloreEastVaccination@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"seats_available\": 90,\n        \"registered_members\": []\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Bangalore East Vaccination Center 2\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006920\",\n        \"email\": \"BangaloreEastVaccination2@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"seats_available\": 40,\n        \"registered_members\": []\n    }\n]"
+								},
+								{
+									"name": "Get All Vaccination Centers details Copy",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/vaccination_center/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"vaccination_center",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 28 May 2022 18:06:06 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.4"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "347"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 21,\n        \"name\": \"Bangalore East Vaccination Center 6\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006920\",\n        \"email\": \"BangaloreEastVaccination6@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"seats_info\": {\n            \"seats_available\": 300,\n            \"date\": \"2022-05-28\",\n            \"register_member\": []\n        }\n    }\n]"
+								},
+								{
+									"name": "Get All Vaccination Centers details General",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/vaccination_center_all/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"vaccination_center_all",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 28 May 2022 18:07:14 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.4"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "323"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 21,\n        \"date\": \"2022-05-28\",\n        \"seats_available\": 300,\n        \"center\": 21,\n        \"name\": \"Bangalore East Vaccination Center 6\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006920\",\n        \"email\": \"BangaloreEastVaccination6@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Register Member info General",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 7,\r\n    \"status\":\"active\",\r\n    \"set_alert\":false \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/members/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register Member success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user\": 2,\r\n    \"status\":\"active\",\r\n    \"first_dose_date\":null,\r\n    \"second_dose_date\":null,\r\n    \"set_alert\":false \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8000/api/members/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"members",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 12 Apr 2022 04:49:38 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "151"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"DateTimeRegistered\": \"2022-04-12T04:49:38.948668Z\",\n    \"status\": \"active\",\n    \"first_dose_date\": null,\n    \"second_dose_date\": null,\n    \"set_alert\": false,\n    \"user\": 2\n}"
+								}
+							]
+						},
+						{
+							"name": "Add self to vaccination center",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"center\": 22,\r\n    \"date\": \"2022-05-30\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/add_self_vaccination_center/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"add_self_vaccination_center",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add Members to the Vaccination Center PATCH",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"registered_members\": [1]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8000/api/update_vaccination_center/1",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"update_vaccination_center",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 12 Apr 2022 04:52:43 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "308"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Bangalore East Vaccination Center\",\n    \"address\": \"#72 , nagarbhavi , bangalore\",\n    \"contact\": \"9686006919\",\n    \"email\": \"BangaloreEastVaccination@gmail.com\",\n    \"status\": \"active\",\n    \"pin_code\": 560072,\n    \"district\": \"Bangalore Urban\",\n    \"state\": \"Karnataka\",\n    \"country\": \"India\",\n    \"seats_available\": 0,\n    \"registered_members\": [\n        1\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Certificate General",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/certificate/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"certificate",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Certificate General",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/certificate/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"certificate",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 30 May 2022 15:06:07 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "306"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 3,\n        \"user\": \"Loadingname\",\n        \"date_given\": \"2022-05-30\",\n        \"date_expiry\": \"2024-05-30\",\n        \"status\": \"first_dose\",\n        \"center\": \"Bangalore East Vaccination Center 6\"\n    },\n    {\n        \"id\": 4,\n        \"user\": \"Loadingname\",\n        \"date_given\": \"2022-07-30\",\n        \"date_expiry\": \"2024-07-30\",\n        \"status\": \"second_dose\",\n        \"center\": \"Bangalore East Vaccination Center 6\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Add or Remove Alerts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"alert_status\": \"True\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/modify_alerts/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"modify_alerts",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Common Actions",
+					"item": [
+						{
+							"name": "Search Vaccination Center ADMIN + General",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/vaccination_center/?name=East",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"vaccination_center",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "East"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Search Vaccination Center No Entry",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/vaccination_center/?name=Vijayanagar",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"vaccination_center",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "Vijayanagar"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 12 Apr 2022 04:33:28 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "27"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"No data found\"\n}"
+								},
+								{
+									"name": "Search Vaccination Center Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8000/api/vaccination_center/?name=East",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"vaccination_center",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "East"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 12 Apr 2022 04:34:06 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "620"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Bangalore East Vaccination Center\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006919\",\n        \"email\": \"BangaloreEastVaccination@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"seats_available\": 0,\n        \"registered_members\": []\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Bangalore East Vaccination Center 2\",\n        \"address\": \"#72 , nagarbhavi , bangalore\",\n        \"contact\": \"9686006920\",\n        \"email\": \"BangaloreEastVaccination2@gmail.com\",\n        \"status\": \"active\",\n        \"pin_code\": 560072,\n        \"district\": \"Bangalore Urban\",\n        \"state\": \"Karnataka\",\n        \"country\": \"India\",\n        \"seats_available\": 0,\n        \"registered_members\": []\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Get Member Info Admin + General",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/members/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register Member success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user\": 2,\r\n    \"status\":\"active\",\r\n    \"first_dose_date\":null,\r\n    \"second_dose_date\":null,\r\n    \"set_alert\":false \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8000/api/register_member/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"register_member",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 12 Apr 2022 04:49:38 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "151"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"DateTimeRegistered\": \"2022-04-12T04:49:38.948668Z\",\n    \"status\": \"active\",\n    \"first_dose_date\": null,\n    \"second_dose_date\": null,\n    \"set_alert\": false,\n    \"user\": 2\n}"
+								}
+							]
+						},
+						{
+							"name": "Register Member info ADMIN + GENERAL",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": 7,\r\n    \"status\":\"active\",\r\n    \"first_dose_date\":null,\r\n    \"second_dose_date\":null,\r\n    \"set_alert\":false \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/api/members/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"members",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register Member success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user\": 2,\r\n    \"status\":\"active\",\r\n    \"first_dose_date\":null,\r\n    \"second_dose_date\":null,\r\n    \"set_alert\":false \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8000/api/members/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"members",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 12 Apr 2022 04:49:38 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "151"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"DateTimeRegistered\": \"2022-04-12T04:49:38.948668Z\",\n    \"status\": \"active\",\n    \"first_dose_date\": null,\n    \"second_dose_date\": null,\n    \"set_alert\": false,\n    \"user\": 2\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Dashboard Service",
+			"item": [
+				{
+					"name": "Admin Actions",
+					"item": [
+						{
+							"name": "Add Covid News",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "After two years, Sikkim becomes Covid-free",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Sikkim on Friday became a Covid-free state after two years with the last two patients recovering, the Health Department said. The state did not report any new case out of the 84 samples that were tested in the last 24 hours, it said.\n\nSikkim has reported a total of 39,165 COVID-19 cases, and 37,966 patients have recovered thus far, while 747 migrated out of the northeastern state.\n\nThe Covid death toll stood at 452, the department said.\n\nSikkim reported its first COVID-19 case on May 23, 2020 after a 25-year-old student who returned from Delhi tested positive.",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8000/api/add_covid_new/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"add_covid_new",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add Covid News",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "title",
+													"value": "After two years, Sikkim becomes Covid-free",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "Sikkim on Friday became a Covid-free state after two years with the last two patients recovering, the Health Department said. The state did not report any new case out of the 84 samples that were tested in the last 24 hours, it said.\n\nSikkim has reported a total of 39,165 COVID-19 cases, and 37,966 patients have recovered thus far, while 747 migrated out of the northeastern state.\n\nThe Covid death toll stood at 452, the department said.\n\nSikkim reported its first COVID-19 case on May 23, 2020 after a 25-year-old student who returned from Delhi tested positive.",
+													"type": "text"
+												},
+												{
+													"key": "url",
+													"value": "https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8000/api/add_covid_new/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"add_covid_new",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 30 May 2022 19:05:51 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Location",
+											"value": "https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "836"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"title\": \"After two years, Sikkim becomes Covid-free\",\n    \"description\": \"Sikkim on Friday became a Covid-free state after two years with the last two patients recovering, the Health Department said. The state did not report any new case out of the 84 samples that were tested in the last 24 hours, it said.\\n\\nSikkim has reported a total of 39,165 COVID-19 cases, and 37,966 patients have recovered thus far, while 747 migrated out of the northeastern state.\\n\\nThe Covid death toll stood at 452, the department said.\\n\\nSikkim reported its first COVID-19 case on May 23, 2020 after a 25-year-old student who returned from Delhi tested positive.\",\n    \"url\": \"https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28\",\n    \"dateadded\": \"2022-05-30T19:05:51.099003Z\",\n    \"dateupdated\": \"2022-05-30T19:05:51.099003Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Add Covid News Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/add_covid_new/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"add_covid_new",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add Covid News",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "title",
+													"value": "After two years, Sikkim becomes Covid-free",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "Sikkim on Friday became a Covid-free state after two years with the last two patients recovering, the Health Department said. The state did not report any new case out of the 84 samples that were tested in the last 24 hours, it said.\n\nSikkim has reported a total of 39,165 COVID-19 cases, and 37,966 patients have recovered thus far, while 747 migrated out of the northeastern state.\n\nThe Covid death toll stood at 452, the department said.\n\nSikkim reported its first COVID-19 case on May 23, 2020 after a 25-year-old student who returned from Delhi tested positive.",
+													"type": "text"
+												},
+												{
+													"key": "url",
+													"value": "https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8000/api/add_covid_new/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"add_covid_new",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 30 May 2022 19:05:51 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Location",
+											"value": "https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "836"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"title\": \"After two years, Sikkim becomes Covid-free\",\n    \"description\": \"Sikkim on Friday became a Covid-free state after two years with the last two patients recovering, the Health Department said. The state did not report any new case out of the 84 samples that were tested in the last 24 hours, it said.\\n\\nSikkim has reported a total of 39,165 COVID-19 cases, and 37,966 patients have recovered thus far, while 747 migrated out of the northeastern state.\\n\\nThe Covid death toll stood at 452, the department said.\\n\\nSikkim reported its first COVID-19 case on May 23, 2020 after a 25-year-old student who returned from Delhi tested positive.\",\n    \"url\": \"https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28\",\n    \"dateadded\": \"2022-05-30T19:05:51.099003Z\",\n    \"dateupdated\": \"2022-05-30T19:05:51.099003Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Add Covid News Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "After two years, Sikkim becomes Covid-free",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Sikkim on Thursday became a Covid-free state after two years with the last two patients recovering, the Health Department said. The state did not report any new case out of the 84 samples that were tested in the last 24 hours, it said.\nSikkim has reported a total of 39,165 COVID-19 cases, and 37,966 patients have recovered thus far, while 747 migrated out of the northeastern state.\nThe Covid death toll stood at 452, the department said.\nSikkim reported its first COVID-19 case on May 23, 2020 after a 25-year-old student who returned from Delhi tested positive.",
+											"type": "text"
+										},
+										{
+											"key": "url",
+											"value": "https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8000/api/add_covid_new/1/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"add_covid_new",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add Covid News Copy",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "title",
+													"value": "After two years, Sikkim becomes Covid-free",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "Sikkim on Thursday became a Covid-free state after two years with the last two patients recovering, the Health Department said. The state did not report any new case out of the 84 samples that were tested in the last 24 hours, it said.\nSikkim has reported a total of 39,165 COVID-19 cases, and 37,966 patients have recovered thus far, while 747 migrated out of the northeastern state.\nThe Covid death toll stood at 452, the department said.\nSikkim reported its first COVID-19 case on May 23, 2020 after a 25-year-old student who returned from Delhi tested positive.",
+													"type": "text"
+												},
+												{
+													"key": "url",
+													"value": "https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8000/api/add_covid_new/1/",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"add_covid_new",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 30 May 2022 19:10:22 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept"
+										},
+										{
+											"key": "Allow",
+											"value": "PUT, PATCH, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "832"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"title\": \"After two years, Sikkim becomes Covid-free\",\n    \"description\": \"Sikkim on Thursday became a Covid-free state after two years with the last two patients recovering, the Health Department said. The state did not report any new case out of the 84 samples that were tested in the last 24 hours, it said.\\nSikkim has reported a total of 39,165 COVID-19 cases, and 37,966 patients have recovered thus far, while 747 migrated out of the northeastern state.\\nThe Covid death toll stood at 452, the department said.\\nSikkim reported its first COVID-19 case on May 23, 2020 after a 25-year-old student who returned from Delhi tested positive.\",\n    \"url\": \"https://www.indiatoday.in/coronavirus-outbreak/story/sikkim-covid19-free-1955226-2022-05-28\",\n    \"dateadded\": \"2022-05-30T19:05:51.099003Z\",\n    \"dateupdated\": \"2022-05-30T19:10:22.424462Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Support Services",
+			"item": []
 		}
 	]
 }
