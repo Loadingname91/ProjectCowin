@@ -12,6 +12,11 @@ class User(AbstractUser):
     live_mode = models.PositiveIntegerField(null=True)
     is_default = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
+    state = models.CharField(max_length=255, null=True)
+    city = models.CharField(max_length=255, null=True)
+    address = models.CharField(max_length=255, null=True)
+    zipcode = models.CharField(max_length=255, null=True)
+    phone_number = models.CharField(max_length=255, null=True)
 
     class Meta:
         ordering = ['id']

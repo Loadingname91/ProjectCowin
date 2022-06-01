@@ -9,7 +9,7 @@ class ValidateUserRole(BasePermission):
     Allows access only to authenticated users.
     """
 
-    def has_permission(self, request, view):
+    def has_permission(self, request, view=None):
         try:
             token = request.META['HTTP_AUTHORIZATION'].split()[1]
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])

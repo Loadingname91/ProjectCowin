@@ -26,8 +26,15 @@ class VaccinationCenter(models.Model):
     district = models.CharField(max_length=150, null=False)
     state = models.CharField(max_length=150, null=False)
     country = models.CharField(max_length=150, null=False)
+
+
+class SeatsAvailable(models.Model):
+    id = models.AutoField(primary_key=True)
+    center = models.ForeignKey(VaccinationCenter, on_delete=models.CASCADE)
+    date = models.DateField(null=False)
     registered_members = models.ManyToManyField(RegisterMember, blank=True)
-    seats_available = models.IntegerField(default=0)
+    seats_available = models.IntegerField()
+
 
 class Certificate(models.Model):
     id = models.AutoField(primary_key=True)
@@ -35,5 +42,5 @@ class Certificate(models.Model):
     date_given = models.DateField(null=False)
     date_expiry = models.DateField(null=False)
     status = models.CharField(max_length=150, null=False)
-    center = models.ForeignKey(VaccinationCenter, on_delete=models.CASCADE)
+    center = models.ForeignKey(VaccinationCenter,on_delete=models.CASCADE)
     registered_member = models.ForeignKey(RegisterMember, on_delete=models.CASCADE)

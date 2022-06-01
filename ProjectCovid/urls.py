@@ -19,12 +19,14 @@ from django.urls import path ,include
 from UserSupportService.models import User
 from VaccinationService.models import VaccinationCenter, RegisterMember
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/',include('UserSupportService.urls')),
-    path('api/',include('VaccinationService.urls')),
-]
 
 admin.site.register(User)
 admin.site.register(VaccinationCenter)
 admin.site.register(RegisterMember)
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/',include('UserSupportService.urls')),
+    path('api/',include('VaccinationService.urls')),
+    path('api/',include('DashboardService.urls')),
+]

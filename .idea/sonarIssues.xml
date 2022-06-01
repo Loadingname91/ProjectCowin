@@ -18,6 +18,51 @@
             <set />
           </value>
         </entry>
+        <entry key="/run server">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/OneDrive - BETSOL/mult/pyhtml.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/OneDrive - BETSOL/mult/week3.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/DashboardService/models.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/DashboardService/serializers.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/DashboardService/urls.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/DashboardService/views.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/ML/coronavirus.ipynb">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/ML/sample.ipynb">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/ProjectCovid/settings.py">
           <value>
             <set />
@@ -93,6 +138,76 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 3/assgn/app.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 3/assgn/data.csv">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 3/assgn/main.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 3/assgn/output.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 3/assgn/result.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 3/assgn/sample.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 4/assgn/Student_data.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 4/assgn/app.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 4/assgn/course_data.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 4/assgn/error.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 4/assgn/index.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../IITM/MAD 1/Week 4/assgn/output.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/ae-wrapper/ae_service/backupsets/views/backup_now_view.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/ae-wrapper/ae_service/backupsets/views/zrm_backup_now_view.py">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../ZMC/todoapp/to-do-flask/app.log">
           <value>
             <set />
@@ -149,6 +264,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../../ZMC/zmc-rest-service/zmc_service/backupsets/tasks/backupset_tasks.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/zmc-rest-service/zmc_service/monitor/utils/get_mointor_report.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/zmc-rest-service/zmc_service/monitor/utils/monitor_report_utils.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/zmc-rest-service/zmc_service/restore/viewdatahandler/handle_store_zrm_restore_data.py">
           <value>
             <set />
           </value>

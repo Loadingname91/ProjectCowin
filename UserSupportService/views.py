@@ -49,3 +49,11 @@ class CurrentUserView(generics.CreateAPIView):
     serializer_class = CurrentUserSerializer
     queryset = User.objects.all()
     permission_classes = ()
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        data = serializer.data
+        data.pop('password')
+        return Response(data, status=status.HTTP_201_CREATED)
