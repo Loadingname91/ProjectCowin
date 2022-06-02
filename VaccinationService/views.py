@@ -209,11 +209,11 @@ class CertificateViews(generics.ListCreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user_id = request.user.id
+        user_id = request.data['user']
         is_user_registered = self.get_co_model_queryset(user_id)
         if is_user_registered and (
                 not is_user_registered.second_dose_date or not is_user_registered.first_dose_date):
-            serializer.save(user_id=request.user.id)
+            serializer.save(user_id=user_id)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response({'message': 'User already has a completed certificate'}, status=status.HTTP_200_OK)
 
