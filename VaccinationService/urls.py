@@ -11,4 +11,6 @@ urlpatterns = [
     path('certificate/', views.CertificateViews.as_view(), name='certificate'),
     path('add_self_vaccination_center/', views.AddSelfVaccinationCenterViews.as_view(), name='add_self_vaccine'),
     path('modify_alerts/',views.ModifyAlertsViews.as_view(), name='modify_alerts'),
+    path('send_alerts/',views.SendAlertsViews.as_view(), name='send_alerts'),
+    path('remove_vaccination_center/<int:id>', views.RemoveVaccinationCenterViews.as_view(), name='remove_vaccine'),
 ]

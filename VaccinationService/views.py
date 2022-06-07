@@ -1,11 +1,13 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
-from django.db.models import Q, F
+import pytz
+from django.core.mail import send_mail
+from django.db.models import Q
 from rest_framework import generics, status, serializers
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
+from ProjectCovid import settings
 from VaccinationService.models import VaccinationCenter, RegisterMember, Certificate, SeatsAvailable
 from VaccinationService.serializer import VaccinationCenterSerializer, RegisterMembershipSerializer, \
     CertificateSerializer, SeatsAvailaVaccinationAppointmentSerializer
@@ -233,9 +235,9 @@ class AddSelfVaccinationCenterViews(generics.ListCreateAPIView):
             data['center_name'] = present_instance.first().center.name
             data['message'] = 'User already has registered to a vaccination center'
             return Response(data, status=status.HTTP_200_OK)
-        seats_available_instance = SeatsAvailable.objects.get(vaccination_center_id=data['center'])
-        if len(seats_available_instance.seats_available) > 0:
-            if seats_available_instance.registered_members.get(id=register_member.id):
+        seats_available_instance = SeatsAvailable.objects.get(center=data['center'])
+        if seats_available_instance.seats_available > 0:
+            if seats_available_instance.registered_members.filter(id=register_member.id).exists():
                 return Response({'message': 'User already registered'}, status=status.HTTP_200_OK)
             else:
                 seats_available_instance.seats_available = seats_available_instance.seats_available - 1
@@ -262,3 +264,48 @@ class ModifyAlertsViews(generics.UpdateAPIView):
             register_member.set_alert = False
         register_member.save()
         return Response({'message': 'Alert status updated successfully'}, status=status.HTTP_200_OK)
+
+
+class SendAlertsViews(generics.CreateAPIView):
+    permission_classes = [IsAuthenticated, ValidateUserRole]
+    queryset = RegisterMember.objects.all()
+
+    def post(self, request, *args, **kwargs):
+        try:
+            recipent_members = []
+            for seats_available in SeatsAvailable.objects.all():
+                if abs(seats_available.date_time_updated - datetime.now(pytz.utc)).days >= 1:
+                    for member in seats_available.registered_members.all():
+                        if member.set_alert and seats_available.seats_available > 0:
+                            recipent_members.append(member.user.email)
+            if len(recipent_members) == 0:
+                return Response({'message': 'No members to send alerts'}, status=status.HTTP_200_OK)
+            send_mail(
+                'Hello from Vaccination Center',
+                'The vaccination center has some seats available which you can book',
+                settings.EMAIL_HOST_USER,
+                recipent_members,
+            )
+            return Response({'message': 'Alert sent successfully'}, status=status.HTTP_200_OK)
+        except RegisterMember.DoesNotExist:
+            return Response({'message': 'User not registered'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'message': 'Error in sending alert'}, status=status.HTTP_200_OK)
+
+
+class RemoveVaccinationCenterViews(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated, ValidateUserRole]
+    queryset = SeatsAvailable.objects.all()
+    lookup_field = 'id'
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            vaccination_center = self.get_queryset().get(center=kwargs['id'])
+            vaccination_center.center.delete()
+            vaccination_center.registered_members.clear()
+            vaccination_center.delete()
+            return Response({'message': 'Vaccination center deleted successfully'}, status=status.HTTP_200_OK)
+        except VaccinationCenter.DoesNotExist:
+            return Response({'message': 'Vaccination center not found'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'message': 'Error in deleting vaccination center'}, status=status.HTTP_200_OK)

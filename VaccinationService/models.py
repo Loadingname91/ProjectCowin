@@ -32,8 +32,9 @@ class SeatsAvailable(models.Model):
     id = models.AutoField(primary_key=True)
     center = models.ForeignKey(VaccinationCenter, on_delete=models.CASCADE)
     date = models.DateField(null=False)
-    registered_members = models.ManyToManyField(RegisterMember, blank=True)
+    registered_members = models.ManyToManyField(RegisterMember, blank=True, related_name='registered_members')
     seats_available = models.IntegerField()
+    date_time_updated = models.DateTimeField(auto_now=True)
 
 
 class Certificate(models.Model):
