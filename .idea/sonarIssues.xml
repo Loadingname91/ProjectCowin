@@ -228,6 +228,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/ae-wrapper/ae_service/common/commands/command_executor2.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/ae-wrapper/ae_service/common/utils/post_runtype_details.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/ae-wrapper/ae_service/common/utils/rest_services.py">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/ae-wrapper/ae_service/settings.py">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../ZMC/todoapp/to-do-flask/app.log">
           <value>
             <set />

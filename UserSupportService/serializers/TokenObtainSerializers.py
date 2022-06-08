@@ -1,4 +1,5 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from UserSupportService.serializers.currentUserSerializer import CurrentUserSerializer
 from UserSupportService.models import User
 from datetime import timedelta
@@ -21,4 +22,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['refresh'] = str(refresh)
         data['access'] = str(refresh.access_token)
         serializer.update_lastlogin(User.objects.get(username=self.user))
+        return data
+
+
+class MyTokenRefreshSerializer(TokenRefreshSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        data['access'] = str(data['access'])
         return data

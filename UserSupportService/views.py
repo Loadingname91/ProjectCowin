@@ -3,11 +3,11 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, BlacklistedToken
 from rest_framework_simplejwt.tokens import RefreshToken , AccessToken
 from rest_framework_simplejwt.utils import aware_utcnow
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework_simplejwt.exceptions import TokenError
 
 from UserSupportService.models import User
-from UserSupportService.serializers.TokenObtainSerializers import MyTokenObtainPairSerializer
+from UserSupportService.serializers.TokenObtainSerializers import MyTokenObtainPairSerializer, MyTokenRefreshSerializer
 from UserSupportService.serializers.currentUserSerializer import CurrentUserSerializer
 
 
@@ -57,3 +57,12 @@ class CurrentUserView(generics.CreateAPIView):
         data = serializer.data
         data.pop('password')
         return Response(data, status=status.HTTP_201_CREATED)
+
+class MyTokenRefreshView(TokenRefreshView):
+    serializer_class = MyTokenRefreshSerializer
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except TokenError:
+            return Response({"detail": "Invalid token"}, status=status.HTTP_400_BAD_REQUEST)
