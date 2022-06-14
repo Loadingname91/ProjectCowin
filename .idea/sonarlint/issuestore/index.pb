@@ -13,5 +13,26 @@ PVaccinationService/migrations/0009_alter_vaccinationcenter_registered_members.p
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 a
 1APIs using POSTMAN/Custom.postman_collection.json,a\d\adae12d7f180423cc2e8d0f6416e50ff88ca466c
-`
-0UI/volt-react-dashboard-master/public/index.html,f\f\ff88e61dee19815a4b180b800ecccf72a93f6b45
+P
+ VaccinationService/serializer.py,1\e\1e16632952b63f28a07849695e9888f83c3bbd86
+J
+VaccinationService/apps.py,7\8\78a54b76774569c53f7b160a5661992d027edfef
+P
+ VaccinationService/validators.py,d\2\d23eb4ec8156b43bb969769273dd227a8debed0f
+D
+ML/coronavirus.ipynb,c\b\cbc3d52001d871e6b9c3a3832d80bfd33b5bdacf
+H
+DashboardService/apps.py,f\d\fd97df1325009e96ad016b05f03f3d60bc0d4023
+<
+ML/sample.py,4\6\46cb80123daa09478737e5acbb6c1996f1af9622
+H
+DashboardService/urls.py,4\0\4090abcdb1aa5a3c20c8d55dbd7075d5930afc5d
+J
+DashboardService/models.py,0\6\069bc5102b99924d8f1ad16b80f07529735e77e4
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+O
+DashboardService/serializers.py,4\9\49f2f13291fb665d19334ef00a565c59c133c5b4
+@
+requirements.txt,1\9\19359a61ae2446b51b549167b014da2fcf265768

@@ -21,9 +21,13 @@ class VaccinationServiceViews(generics.ListCreateAPIView):
 
     def filter_queryset(self, queryset):
         if self.request.method == 'GET':
-            query = self.request.GET.get('name', "")
+            if self.request.GET.get('name', ""):
+                query = self.request.GET.get('name', "")
+            elif self.request.GET.get('pin_code', ""):
+                query = self.request.GET.get('pin_code', "")
             if query:
-                value = queryset.filter(Q(name__icontains=query) | Q(address__icontains=query)).all()
+                value = queryset.filter(Q(name__icontains=query) | Q(address__icontains=query) |
+                                        Q(pin_code__icontains=query)).all()
                 return value
         return queryset
 
@@ -39,7 +43,8 @@ class VaccinationServiceViews(generics.ListCreateAPIView):
 
     def list(self, request, *args, **kwargs):
         validate_user = ValidateUserRole()
-        if not validate_user.has_permission(request) and not request.GET.get('name', ""):
+        if not validate_user.has_permission(request) and not request.GET.get('name', "") \
+                and not request.GET.get('pin_code', ""):
             return Response(data={"message": "You do not have premission to perform this action"},
                             status=status.HTTP_403_FORBIDDEN)
         queryset = self.filter_queryset(self.get_queryset())
