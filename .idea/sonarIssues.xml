@@ -318,6 +318,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../ZMC/zmc-rest-service/zmc_service/restore/utils/custom_monitor_constants.py">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../ZMC/zmc-rest-service/zmc_service/restore/viewdatahandler/handle_store_zrm_restore_data.py">
           <value>
             <set />

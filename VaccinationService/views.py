@@ -11,6 +11,7 @@ from ProjectCovid import settings
 from VaccinationService.models import VaccinationCenter, RegisterMember, Certificate, SeatsAvailable
 from VaccinationService.serializer import VaccinationCenterSerializer, RegisterMembershipSerializer, \
     CertificateSerializer, SeatsAvailaVaccinationAppointmentSerializer
+from VaccinationService.utils import write_data_for_email
 from VaccinationService.validators import ValidateUserRole
 
 
@@ -21,10 +22,9 @@ class VaccinationServiceViews(generics.ListCreateAPIView):
 
     def filter_queryset(self, queryset):
         if self.request.method == 'GET':
-            if self.request.GET.get('name', ""):
-                query = self.request.GET.get('name', "")
-            elif self.request.GET.get('pin_code', ""):
-                query = self.request.GET.get('pin_code', "")
+            query = None
+            if self.request.GET.get('key', ""):
+                query = self.request.GET.get('key', "")
             if query:
                 value = queryset.filter(Q(name__icontains=query) | Q(address__icontains=query) |
                                         Q(pin_code__icontains=query)).all()
@@ -211,6 +211,11 @@ class CertificateViews(generics.ListCreateAPIView):
         serializer = self.get_serializer(queryset, many=True)
         if len(serializer.data) == 0:
             return Response({'message': 'No data found'}, status=status.HTTP_200_OK)
+        data,recipient_list = write_data_for_email(serializer.data)
+        send_mail("Hello from Vaccination Center",data,
+                  settings.EMAIL_HOST_USER,
+                  recipient_list
+                  )
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):

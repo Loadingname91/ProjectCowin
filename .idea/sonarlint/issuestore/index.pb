@@ -19,8 +19,6 @@ J
 VaccinationService/apps.py,7\8\78a54b76774569c53f7b160a5661992d027edfef
 P
  VaccinationService/validators.py,d\2\d23eb4ec8156b43bb969769273dd227a8debed0f
-D
-ML/coronavirus.ipynb,c\b\cbc3d52001d871e6b9c3a3832d80bfd33b5bdacf
 H
 DashboardService/apps.py,f\d\fd97df1325009e96ad016b05f03f3d60bc0d4023
 <
@@ -36,3 +34,5 @@ O
 DashboardService/serializers.py,4\9\49f2f13291fb665d19334ef00a565c59c133c5b4
 @
 requirements.txt,1\9\19359a61ae2446b51b549167b014da2fcf265768
+D
+ProjectCovid/urls.py,d\c\dc0ca16084cda29a2ea98a29b0d2c08f77161959
